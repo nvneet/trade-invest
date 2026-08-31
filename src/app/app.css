@@ -1,0 +1,87 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.logo-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.logo {
+  width: 40px;
+  height: 40px;
+}
+.brand-name {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #333;
+}
+.nav-tabs {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+.nav-tabs a {
+  text-decoration: none;
+  color: #374151;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 999px;
+  transition: all 0.18s ease;
+  position: relative;
+  display: inline-block;
+}
+.nav-tabs a:hover,
+.nav-tabs a:focus {
+  color: #0b69ff;
+  background: rgba(11, 105, 255, 0.06);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(11, 88, 255, 0.06);
+  outline: none;
+}
+.nav-tabs a.active {
+  color: #0b69ff;
+  background: rgba(11, 105, 255, 0.08);
+  box-shadow: 0 8px 20px rgba(11, 88, 255, 0.06);
+}
+.nav-tabs a::after {
+  content: '';
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  height: 3px;
+  bottom: 6px;
+  background: transparent;
+  border-radius: 3px;
+  transition:
+    background 0.18s ease,
+    transform 0.18s ease;
+  transform: scaleX(0);
+  transform-origin: left;
+}
+.nav-tabs a.active::after {
+  background: #0b69ff;
+  transform: scaleX(1);
+}
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+.lang-select {
+  padding: 5px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+.login-icon {
+  color: #333;
+  display: flex;
+  align-items: center;
+}
+.main-content {
+  padding: 2rem;
+}

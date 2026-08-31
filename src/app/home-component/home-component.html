@@ -1,0 +1,60 @@
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-image">
+      <ng-container *ngFor="let img of images; let i = index">
+        <img
+          [src]="img"
+          class="slide"
+          [style.animationDelay]="i * 3 + 's'"
+          alt="Stock market illustration"
+        />
+      </ng-container>
+    </div>
+
+    <div class="hero-content">
+      <h1>Best Stock Market Training Institute in Kolkata, West Bengal, India</h1>
+      <p class="sub">SEBI Registration No.: xxxxxxxxxx</p>
+
+      <p class="lead">
+        West Bengal's leading Stock Market Learning Platform, where you get to learn about A to Z of
+        the Capital Market Trading &amp; Investment training practically.
+      </p>
+
+      <a class="cta" routerLink="/courses">Start Your Journey</a>
+    </div>
+  </div>
+</section>
+
+<section class="features">
+  <h2>Learn the Stock Market Anytime, Anywhere!</h2>
+  <p class="intro">Know About INVESMATE</p>
+
+  <div class="feature-cards">
+    <div class="card" aria-hidden="false">
+      <div class="icon"><img src="assets/icons/sebi-registered.png" alt="SEBI Registered" /></div>
+      <h3>SEBI-Registered</h3>
+      <p>
+        INVESMATE, an Educational Initiative of SEBI Registered RA: INVESMATE INSIGHTS [Reg No.:
+        INH000017985]
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="icon"><img src="assets/icons/years-trust.png" alt="7 Years of Trust" /></div>
+      <h3>7 Years of Trust</h3>
+      <p>
+        Empowered over 1 lakh 20 thousand students to achieve financial success for the last 7
+        years.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="icon"><img src="assets/icons/mentorship.png" alt="Program + Mentorship" /></div>
+      <h3>Powerful Program + Mentorship</h3>
+      <p>
+        Our every share market course module is thoughtfully designed and taught by NISM-Certified
+        professionals.
+      </p>
+    </div>
+  </div>
+</section>

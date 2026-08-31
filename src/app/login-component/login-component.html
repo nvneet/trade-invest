@@ -1,0 +1,79 @@
+<div class="auth-wrapper">
+  <div class="auth-card" [class.sign-up-mode]="!isLogin">
+    <!-- Form Container -->
+    <div class="form-container">
+      <h2>{{ isLogin ? 'Welcome Back' : 'Create Account' }}</h2>
+      <p class="subtitle">
+        {{ isLogin ? 'Please enter your details to sign in' : 'Start your learning journey today' }}
+      </p>
+
+      <form [formGroup]="authForm" (ngSubmit)="onSubmit()">
+        @if (!isLogin) {
+          <div class="input-group" [@fadeIn]>
+            <label>Full Name</label>
+            <input type="text" formControlName="name" placeholder="John Doe" />
+            @if (authForm.get('name')?.touched && authForm.get('name')?.invalid) {
+              <span class="error-msg">Name is required</span>
+            }
+          </div>
+        }
+
+        <div class="input-group">
+          <label>Email Address</label>
+          <input type="email" formControlName="email" placeholder="name&#64;example.com" />
+          @if (authForm.get('email')?.touched && authForm.get('email')?.invalid) {
+            <span class="error-msg">Valid email is required</span>
+          }
+        </div>
+
+        <div class="input-group">
+          <label>Password</label>
+          <input type="password" formControlName="password" placeholder="••••••••" />
+          @if (authForm.get('password')?.touched && authForm.get('password')?.invalid) {
+            <span class="error-msg">Password must be at least 6 characters</span>
+          }
+        </div>
+
+        @if (errorMessage) {
+          <div class="server-error">{{ errorMessage }}</div>
+        }
+
+        @if (successMessage) {
+          <div class="server-success">{{ successMessage }}</div>
+        }
+
+        <button type="submit" class="submit-btn" [disabled]="authForm.invalid || isLoading">
+          @if (isLoading) {
+            <span class="spinner"></span> Processing...
+          } @else {
+            {{ isLogin ? 'Sign In' : 'Register & Save' }}
+          }
+        </button>
+      </form>
+
+      <div class="toggle-mode">
+        <p>
+          {{ isLogin ? "Don't have an account?" : 'Already have an account?' }}
+          <button type="button" (click)="toggleMode()">{{ isLogin ? 'Sign Up' : 'Log In' }}</button>
+        </p>
+      </div>
+    </div>
+
+    <!-- Animated Side Panel -->
+    <div class="side-banner">
+      <div class="banner-content">
+        <h3>{{ isLogin ? 'Hello, Friend!' : 'Welcome Back!' }}</h3>
+        <p>
+          {{
+            isLogin
+              ? 'Enter your personal details and start your journey with us.'
+              : 'To keep connected with us please login with your personal info.'
+          }}
+        </p>
+        <button class="ghost-btn" (click)="toggleMode()">
+          {{ isLogin ? 'Sign Up' : 'Log In' }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

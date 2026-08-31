@@ -1,0 +1,25 @@
+<div class="courses-container">
+  <h2>Explore Courses</h2>
+
+  <div class="add-form">
+    <input [(ngModel)]="newTitle" placeholder="Course Title" />
+    <input [(ngModel)]="newDesc" placeholder="Description" />
+    <input [(ngModel)]="newPrice" type="number" placeholder="Price" />
+    <button (click)="addCourse()">Add Course</button>
+  </div>
+
+  <!-- Carousel / Slider View (3 items visible) -->
+  <div class="slider-wrapper">
+    <button class="slider-btn" (click)="prevSlide()">❮</button>
+
+    <div class="courses-track">
+      <app-course-card-component
+        *ngFor="let course of visibleCourses()"
+        [course]="course"
+        (remove)="removeCourse($event)"
+      ></app-course-card-component>
+    </div>
+
+    <button class="slider-btn" (click)="nextSlide()">❯</button>
+  </div>
+</div>

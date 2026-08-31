@@ -1,0 +1,260 @@
+:root {
+  --accent: #0066cc;
+  --muted: #6b7280;
+  --glass: rgba(255, 255, 255, 0.72);
+  --surface: #ffffff;
+}
+
+/* Layout */
+.hero {
+  padding: 48px 16px;
+  background: linear-gradient(180deg, #f7fbff 0%, #ffffff 60%);
+}
+.hero-inner {
+  display: flex;
+  gap: 36px;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.hero-image {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  height: 460px;
+  border-radius: 14px;
+}
+
+/* stacked images: each image is absolutely positioned and animated via CSS */
+.hero-image img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 14px;
+  box-shadow: 0 20px 40px rgba(2, 6, 23, 0.12);
+  transform: translateZ(0);
+  opacity: 0;
+  transition:
+    opacity 0.45s ease,
+    transform 0.45s ease,
+    filter 0.45s ease;
+  /* 12s total cycle; each slide shows ~4s (delays staggered by 4s) */
+  animation:
+    slideAnimation 12s infinite both,
+    floatSlow 6s ease-in-out infinite;
+}
+.hero-image img:nth-child(1) {
+  animation-delay: 0s;
+}
+.hero-image img:nth-child(2) {
+  animation-delay: 4s;
+}
+.hero-image img:nth-child(3) {
+  animation-delay: 8s;
+}
+
+/* Pause slideshow on hover */
+.hero-image:hover img {
+  animation-play-state: paused;
+}
+
+@keyframes slideAnimation {
+  0% {
+    opacity: 0;
+    transform: scale(1);
+  }
+  8% {
+    opacity: 1;
+  }
+  33% {
+    opacity: 1;
+  }
+  42% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.hero-content {
+  flex: 1;
+  padding: 8px 8px;
+}
+.hero-content h1 {
+  font-size: clamp(1.6rem, 3.2vw, 2.4rem);
+  margin: 0 0 12px;
+  line-height: 1.05;
+  color: #07263a;
+}
+.hero-content .sub {
+  color: var(--muted);
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+.hero-content .lead {
+  font-size: 1.02rem;
+  color: #334155;
+  margin-bottom: 18px;
+}
+.cta {
+  display: inline-block;
+  padding: 12px 22px;
+  background: linear-gradient(90deg, var(--accent), #0047a6);
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  box-shadow: 0 8px 24px rgba(2, 6, 23, 0.08);
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease;
+}
+.cta:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 40px rgba(2, 6, 23, 0.12);
+}
+
+/* Accent floating badge on image */
+.hero-image::after {
+  content: 'SEBI Registered';
+  position: absolute;
+  right: 18px;
+  bottom: 18px;
+  background: var(--glass);
+  color: #07263a;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-weight: 700;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 8px 24px rgba(2, 6, 23, 0.06);
+}
+
+/* Features */
+.features {
+  padding: 48px 16px;
+  background: linear-gradient(180deg, #f8fbff, #f3f7ff);
+  margin-top: 28px;
+}
+.features h2 {
+  text-align: center;
+  margin: 0 0 8px;
+  color: #07263a;
+}
+.features .intro {
+  text-align: center;
+  color: var(--muted);
+  margin-bottom: 24px;
+}
+.feature-cards {
+  display: flex;
+  gap: 22px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.card {
+  flex: 1;
+  background: var(--surface);
+  padding: 22px;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(13, 38, 63, 0.06);
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+}
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(13, 38, 63, 0.08);
+}
+.icon {
+  height: 92px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+.icon img {
+  height: 72px;
+  width: auto;
+  filter: drop-shadow(0 6px 18px rgba(2, 6, 23, 0.06));
+}
+.card h3 {
+  margin: 6px 0 8px;
+  color: #0b3b66;
+}
+.card p {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+/* Staggered reveal animation */
+.feature-cards .card {
+  opacity: 0;
+  transform: translateY(18px) scale(0.995);
+  animation: revealUp 0.7s ease forwards;
+}
+.feature-cards .card:nth-child(1) {
+  animation-delay: 0.08s;
+}
+.feature-cards .card:nth-child(2) {
+  animation-delay: 0.18s;
+}
+.feature-cards .card:nth-child(3) {
+  animation-delay: 0.28s;
+}
+@keyframes revealUp {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .hero-inner {
+    flex-direction: column-reverse;
+    padding-top: 20px;
+  }
+  .hero-image {
+    height: 320px;
+  }
+  .feature-cards {
+    flex-direction: column;
+  }
+  .hero-image::after {
+    right: 12px;
+    bottom: 12px;
+    padding: 8px 10px;
+  }
+}
+
+@media (max-width: 420px) {
+  .hero-image {
+    height: 220px;
+  }
+  .hero-content h1 {
+    font-size: 1.25rem;
+  }
+  .cta {
+    padding: 10px 16px;
+  }
+}
+
+@keyframes floatSlow {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* accessibility focus styles */
+.cta:focus {
+  outline: 3px solid rgba(0, 102, 204, 0.18);
+  outline-offset: 4px;
+}

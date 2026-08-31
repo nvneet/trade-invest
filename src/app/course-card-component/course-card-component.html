@@ -1,0 +1,23 @@
+<div class="course-card">
+  <div class="card-header">
+    <h3>{{ course.title }}</h3>
+    <button class="remove-btn" (click)="remove.emit(course.id)">×</button>
+  </div>
+  <p class="desc">{{ course.description }}</p>
+  <div class="meta-info">
+    <span>👥 {{ course.enrolled }} Enrolled</span>
+    <span class="stars">⭐ {{ course.rating }}/5</span>
+  </div>
+  <div class="price">\${{ course.price }}</div>
+
+  <div class="comments-section">
+    <h4>Feedback & Comments</h4>
+    <div class="comment-list">
+      <p class="comment-item" *ngFor="let comment of course.comments">💬 {{ comment }}</p>
+    </div>
+    <div class="comment-input-group">
+      <input [(ngModel)]="newComment" placeholder="Add feedback..." />
+      <button (click)="addComment()">Post</button>
+    </div>
+  </div>
+</div>

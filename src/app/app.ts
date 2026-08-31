@@ -1,12 +1,21 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+//App {}
+// app.component.ts
+import { Component, inject } from '@angular/core';
+import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
+import { TranslationService } from './translation-service';
 
 @Component({
-  imports: [RouterOutlet],
   selector: 'app-root',
-  styleUrl: './app.css',
+  standalone: true,
+  imports: [RouterOutlet, RouterLink, RouterLinkActive],
   templateUrl: './app.html',
+  styleUrls: ['./app.css'],
 })
 export class App {
-  protected readonly title = signal('trade-invest');
+  t: TranslationService = inject(TranslationService);
+
+  onLangChange(event: Event) {
+    const val = (event.target as HTMLSelectElement).value as 'en' | 'hi' | 'bn';
+    this.t.setLanguage(val);
+  }
 }
