@@ -1,7 +1,14 @@
 <div class="course-card">
   <div class="card-header">
     <h3>{{ course.title }}</h3>
-    <button class="remove-btn" (click)="remove.emit(course.id)">×</button>
+    <button
+      class="remove-btn"
+      type="button"
+      (click)="remove.emit(course.id)"
+      [attr.aria-label]="'Remove ' + course.title"
+    >
+      ×
+    </button>
   </div>
   <p class="desc">{{ course.description }}</p>
   <div class="meta-info">
@@ -16,8 +23,8 @@
       <p class="comment-item" *ngFor="let comment of course.comments">💬 {{ comment }}</p>
     </div>
     <div class="comment-input-group">
-      <input [(ngModel)]="newComment" placeholder="Add feedback..." />
-      <button (click)="addComment()">Post</button>
+      <input [(ngModel)]="newComment" placeholder="Add feedback..." aria-label="Add feedback" />
+      <button type="button" (click)="addComment()">Post</button>
     </div>
   </div>
 </div>

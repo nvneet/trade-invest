@@ -1,12 +1,28 @@
-<div class="courses-container">
+<main class="courses-container">
   <h2>Explore Courses</h2>
 
-  <div class="add-form">
-    <input [(ngModel)]="newTitle" placeholder="Course Title" />
-    <input [(ngModel)]="newDesc" placeholder="Description" />
-    <input [(ngModel)]="newPrice" type="number" placeholder="Price" />
-    <button (click)="addCourse()">Add Course</button>
-  </div>
+  <form class="add-form" (ngSubmit)="addCourse()">
+    <input
+      [(ngModel)]="newTitle"
+      name="title"
+      placeholder="Course Title"
+      aria-label="Course title"
+    />
+    <input
+      [(ngModel)]="newDesc"
+      name="description"
+      placeholder="Description"
+      aria-label="Course description"
+    />
+    <input
+      [(ngModel)]="newPrice"
+      name="price"
+      type="number"
+      placeholder="Price"
+      aria-label="Course price"
+    />
+    <button type="submit">Add Course</button>
+  </form>
 
   <!-- Carousel / Slider View (3 items visible) -->
   <div class="slider-wrapper">
@@ -22,4 +38,4 @@
 
     <button class="slider-btn" (click)="nextSlide()">❯</button>
   </div>
-</div>
+</main>
