@@ -4,7 +4,7 @@
     <span class="brand-name">HobbyPage</span>
   </div>
 
-  <nav class="nav-tabs">
+  <nav class="nav-tabs" aria-label="Main navigation">
     <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">{{
       t.translate('home')
     }}</a>
@@ -19,7 +19,7 @@
       <option value="bn">বাংলা</option>
     </select>
 
-    <a routerLink="/login" class="login-icon">
+    <a routerLink="/login" class="login-icon" aria-label="Log in" title="Log in">
       <svg
         width="24"
         height="24"
