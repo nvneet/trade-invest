@@ -51,29 +51,9 @@ export class CoursesComponent {
     },
   ]);
 
-  currentIndex = 0;
   newTitle = '';
   newDesc = '';
   newPrice: number | null = null;
-
-  visibleCourses() {
-    const list = this.courses();
-    // Return 3 items starting from currentIndex, wrapping around if needed
-    const result = [];
-    for (let i = 0; i < 3; i++) {
-      const index = (this.currentIndex + i) % list.length;
-      if (list[index]) result.push(list[index]);
-    }
-    return result;
-  }
-
-  nextSlide() {
-    this.currentIndex = (this.currentIndex + 1) % this.courses().length;
-  }
-
-  prevSlide() {
-    this.currentIndex = (this.currentIndex - 1 + this.courses().length) % this.courses().length;
-  }
 
   addCourse() {
     if (this.newTitle && this.newDesc && this.newPrice !== null) {

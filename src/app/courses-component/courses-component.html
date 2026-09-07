@@ -24,18 +24,14 @@
     <button type="submit">Add Course</button>
   </form>
 
-  <!-- Carousel / Slider View (3 items visible) -->
+  <!-- Responsive course grid -->
   <div class="slider-wrapper">
-    <button class="slider-btn" (click)="prevSlide()">❮</button>
-
     <div class="courses-track">
       <app-course-card-component
-        *ngFor="let course of visibleCourses()"
+        *ngFor="let course of courses()"
         [course]="course"
         (remove)="removeCourse($event)"
       ></app-course-card-component>
     </div>
-
-    <button class="slider-btn" (click)="nextSlide()">❯</button>
   </div>
 </main>

@@ -34,33 +34,16 @@
   cursor: pointer;
 }
 .slider-wrapper {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  justify-content: center;
-  min-width: 0;
+  width: 100%;
 }
 .courses-track {
-  flex: 1;
-  min-width: 0;
-  display: flex;
-  gap: 20px;
-  overflow: hidden;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  gap: clamp(12px, 2vw, 20px);
   padding: 10px 0;
-}
-.slider-btn {
-  flex: 0 0 auto;
-  background: #333;
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  cursor: pointer;
-  border-radius: 50%;
-  font-size: 1rem;
 }
 
 app-course-card-component {
-  flex: 1 1 0;
   min-width: 0;
 }
 
@@ -74,11 +57,7 @@ app-course-card-component {
   }
 
   .courses-track {
-    gap: 12px;
-  }
-
-  app-course-card-component {
-    flex-basis: 100%;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr));
   }
 }
 
@@ -87,11 +66,7 @@ app-course-card-component {
     grid-template-columns: 1fr;
   }
 
-  .slider-wrapper {
-    gap: 8px;
-  }
-
-  .slider-btn {
-    padding: 8px 10px;
+  .courses-track {
+    grid-template-columns: 1fr;
   }
 }
